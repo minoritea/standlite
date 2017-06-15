@@ -9,9 +9,9 @@
     "launch": "electron .",
     "babel": "babel src/index.js -o index.js",
     "prebuild": "yarn run babel",
-    "build:linux": "electron-packager . standlite --platform=darwin --arch=x64 --overwrite --package-manager=yarn",
-    "build:osx": "electron-packager . standlite --platform=darwin --arch=x64 --icon=standlite.icns --overwrite --package-manager=yarn",
-    "build" : "yarn run build:osx & yarn run build:linux"
+    "build:linux": "electron-packager . standlite --platform=linux --arch=x64 --overwrite --package-manager=yarn",
+    "build:darwin": "electron-packager . standlite --platform=darwin --arch=x64 --icon=standlite.icns --overwrite --package-manager=yarn",
+    "build": "yarn run build:darwin & yarn run build:linux"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -19,6 +19,6 @@
     "electron-packager": "^8.7.0"
   },
   "dependencies": {
-    "electron": "^1.6.10"
+    "electron": "^1.6.11"
   }
 }
