@@ -1,0 +1,24 @@
+#!/bin/bash
+function abspath() {
+  cd $1
+  pwd
+}
+
+ORIG_IMAGE="$1"
+[ "x$1" = "x" ] && exit 1
+
+CURDIR=$(abspath .)
+
+APPNAME=$(basename "$CURDIR")
+
+ICONSET=$(abspath .)/$APPNAME.iconset
+
+[ ! -e "$ICONSET" ] && mkdir -p "$ICONSET"
+
+for attr in 16x16:16x16 32x32:16x16@2x 32x32:32x32 64x64:32x32@2x 128x128:128x128 256x256:128x128@2x 256x256:256x256 512x512:256x256@2x 512x512:512x512 1024x1024:512x512@2x;do
+  real=$(echo $attr | awk -F: '{print $1}')
+  name=$(echo $attr | awk -F: '{print $2}')
+  convert "$ORIG_IMAGE" -resize "${real}!" "$ICONSET/icon_${name}.png"
+done
+
+iconutil -c icns $ICONSET
