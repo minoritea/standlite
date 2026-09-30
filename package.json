@@ -19,6 +19,6 @@
     "electron-packager": "^8.7.0"
   },
   "dependencies": {
-    "electron": "^18.3.7"
+    "electron": "^41.10.6"
   }
 }
